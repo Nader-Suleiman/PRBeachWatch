@@ -1,0 +1,3228 @@
+/* =========================================================
+   PR BEACH WATCH
+   RETRO PIXEL DASHBOARD
+   ========================================================= */
+
+
+:root {
+    --darkest: #00172c;
+    --navy: #002f58;
+    --navy2: #034d82;
+
+    --blue: #078ed0;
+    --blue2: #08bdea;
+    --cyan: #28ddff;
+    --light-cyan: #9df5ff;
+
+    --green: #67eb67;
+    --green-dark: #1a743f;
+
+    --yellow: #ffd64a;
+    --orange: #ff9c58;
+    --red: #ff5e55;
+
+    --coral: #ff8574;
+
+    --cream: #edfaff;
+
+    --ink: #071c2c;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+
+    min-height: 100%;
+}
+
+
+body {
+    background:
+        radial-gradient(
+            circle at top,
+            #075b8b,
+            #001426 65%
+        );
+
+    color: white;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    image-rendering: pixelated;
+
+    padding:
+        10px 6px;
+}
+
+
+button {
+    font: inherit;
+}
+
+
+/* =========================================================
+   MAIN APP FRAME
+   ========================================================= */
+
+.app-shell {
+    position: relative;
+
+    width:
+        min(
+            100%,
+            760px
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        14px 14px 0;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0473aa,
+            #12c3ed 4%,
+            #08a9de 50%,
+            #12c3ed 96%,
+            #0473aa
+        );
+
+    border:
+        6px solid #002a50;
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        inset 0 0 0 4px #66edff,
+        inset 0 0 0 9px #0478b0,
+        0 12px 0 #00192f;
+}
+
+
+/* =========================================================
+   DEVICE NOTCH
+   ========================================================= */
+
+.device-notch {
+    position: absolute;
+
+    z-index: 200;
+
+    top: 0;
+    left: 50%;
+
+    width: 35%;
+    height: 23px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #00101f;
+
+    border-left:
+        5px solid #00568c;
+
+    border-right:
+        5px solid #00568c;
+
+    border-bottom:
+        5px solid #00568c;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            94% 100%,
+            6% 100%
+        );
+}
+
+
+/* =========================================================
+   TOP STATUS BAR
+   ========================================================= */
+
+.top-status-bar {
+    height: 59px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    padding:
+        7px 35px 7px;
+
+    background:
+        linear-gradient(
+            #04639a,
+            #00477b
+        );
+
+    border:
+        4px solid #001e3d;
+
+    box-shadow:
+        inset 0 4px #0a9bd2;
+
+    border-radius:
+        14px 14px 4px 4px;
+}
+
+
+.signal-bars {
+    display: flex;
+
+    gap: 4px;
+
+    align-items: end;
+}
+
+
+.signal-bars span {
+    width: 7px;
+
+    background:
+        #9ff5ff;
+
+    border:
+        1px solid #0d577d;
+
+    box-shadow:
+        2px 0 #036898;
+}
+
+
+.signal-bars span:nth-child(1) {
+    height: 9px;
+}
+
+
+.signal-bars span:nth-child(2) {
+    height: 15px;
+}
+
+
+.signal-bars span:nth-child(3) {
+    height: 22px;
+}
+
+
+.signal-bars span:nth-child(4) {
+    height: 29px;
+}
+
+
+.top-clock {
+    color:
+        #c3f4ff;
+
+    font-size:
+        clamp(
+            13px,
+            2.6vw,
+            21px
+        );
+
+    letter-spacing:
+        1px;
+
+    text-shadow:
+        3px 3px #074066;
+}
+
+
+.battery-area {
+    justify-self:
+        end;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    color:
+        #d7f7ff;
+
+    font-size:
+        clamp(
+            9px,
+            2vw,
+            16px
+        );
+}
+
+
+.battery {
+    position:
+        relative;
+
+    width:
+        48px;
+
+    height:
+        26px;
+
+    padding:
+        4px;
+
+    border:
+        4px solid #b8f5ff;
+
+    background:
+        #07577d;
+}
+
+
+.battery::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    right:
+        -8px;
+
+    top:
+        6px;
+
+    width:
+        5px;
+
+    height:
+        10px;
+
+    background:
+        #b8f5ff;
+}
+
+
+.battery-fill {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            #9cff79,
+            #3fe757
+        );
+
+    box-shadow:
+        inset 0 3px #d6ffb6;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.title-panel {
+    min-height:
+        100px;
+
+    margin:
+        8px 5px 9px;
+
+    padding:
+        7px 16px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        80px
+        1fr
+        80px;
+
+    align-items:
+        center;
+
+    background:
+        linear-gradient(
+            #6deeff,
+            #15b8e5
+        );
+
+    border:
+        5px solid #002544;
+
+    box-shadow:
+        inset 0 5px #b5fbff,
+        inset 0 -6px #0875ad,
+        0 5px #00213e;
+}
+
+
+.title-panel h1 {
+    margin:
+        0;
+
+    text-align:
+        center;
+
+    white-space:
+        nowrap;
+
+    color:
+        #ffd958;
+
+    font-size:
+        clamp(
+            20px,
+            5.5vw,
+            40px
+        );
+
+    letter-spacing:
+        -1px;
+
+    text-shadow:
+        4px 4px 0 #9f5219,
+        7px 7px 0 #041528,
+        -2px 0 #041528,
+        0 -2px #041528,
+        2px 0 #041528,
+        0 2px #041528;
+}
+
+
+.title-art {
+    font-size:
+        clamp(
+            34px,
+            7vw,
+            58px
+        );
+
+    text-align:
+        center;
+
+    filter:
+        drop-shadow(
+            4px 4px 0
+            #07527d
+        );
+}
+
+
+/* =========================================================
+   MAP PANEL
+   ========================================================= */
+
+.map-panel {
+    position:
+        relative;
+
+    height:
+        clamp(
+            590px,
+            93vw,
+            775px
+        );
+
+    overflow:
+        hidden;
+
+    margin:
+        0 4px;
+
+    border:
+        6px solid #001f3d;
+
+    background:
+        linear-gradient(
+            rgba(12, 126, 187, 0.35) 2px,
+            transparent 2px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(12, 126, 187, 0.35) 2px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at center,
+            #075a90,
+            #003769 70%,
+            #002d59
+        );
+
+    background-size:
+        48px 48px,
+        48px 48px,
+        auto;
+
+    box-shadow:
+        inset 0 0 0 4px #046ba2,
+        inset 0 0 0 8px #002f59;
+}
+
+
+.map-panel::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0.2;
+
+    background:
+        repeating-linear-gradient(
+            -30deg,
+            transparent 0 30px,
+            #0888c1 31px 34px,
+            transparent 35px 63px
+        );
+}
+
+
+/* =========================================================
+   LIVE BANNER
+   ========================================================= */
+
+.live-banner {
+    position:
+        absolute;
+
+    z-index:
+        100;
+
+    left:
+        50%;
+
+    top:
+        18px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(
+            67%,
+            470px
+        );
+
+    padding:
+        15px 10px;
+
+    color:
+        #111b22;
+
+    background:
+        linear-gradient(
+            #ff9c8a,
+            #f37468
+        );
+
+    border:
+        5px solid #391d24;
+
+    clip-path:
+        polygon(
+            4% 0,
+            96% 0,
+            100% 18%,
+            100% 82%,
+            96% 100%,
+            4% 100%,
+            0 82%,
+            0 18%
+        );
+
+    text-align:
+        center;
+
+    font-size:
+        clamp(
+            10px,
+            2.8vw,
+            20px
+        );
+
+    line-height:
+        1.3;
+
+    box-shadow:
+        inset 0 5px #ffc0ae;
+}
+
+
+.banner-spark {
+    position:
+        absolute;
+
+    z-index:
+        80;
+
+    top:
+        34px;
+
+    color:
+        #ffd956;
+
+    font-size:
+        25px;
+}
+
+
+.spark-left {
+    left:
+        16%;
+}
+
+
+.spark-right {
+    right:
+        16%;
+}
+
+
+/* =========================================================
+   COMPASS
+   ========================================================= */
+
+.compass {
+    position:
+        absolute;
+
+    z-index:
+        60;
+
+    top:
+        80px;
+
+    left:
+        22px;
+
+    width:
+        105px;
+
+    height:
+        110px;
+
+    color:
+        #c7f4ff;
+}
+
+
+.compass-circle {
+    position:
+        absolute;
+
+    left:
+        24px;
+
+    top:
+        25px;
+
+    width:
+        64px;
+
+    height:
+        64px;
+
+    border:
+        4px solid #abf0ff;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 0 0 4px #084f7e,
+        inset 0 0 0 3px #002a4c;
+}
+
+
+.compass-label {
+    position:
+        absolute;
+
+    font-size:
+        11px;
+}
+
+
+.north-label {
+    left:
+        50px;
+
+    top:
+        0;
+}
+
+
+.south-label {
+    left:
+        50px;
+
+    bottom:
+        0;
+}
+
+
+.west-label {
+    left:
+        0;
+
+    top:
+        51px;
+}
+
+
+.east-label {
+    right:
+        0;
+
+    top:
+        51px;
+}
+
+
+.compass-pointer {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    width:
+        0;
+
+    height:
+        0;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.pointer-red {
+    top:
+        6px;
+
+    border-left:
+        10px solid transparent;
+
+    border-right:
+        10px solid transparent;
+
+    border-bottom:
+        27px solid #fa5850;
+}
+
+
+.pointer-white {
+    bottom:
+        6px;
+
+    border-left:
+        10px solid transparent;
+
+    border-right:
+        10px solid transparent;
+
+    border-top:
+        27px solid #effcff;
+}
+
+
+.compass-center {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        10px;
+
+    height:
+        10px;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        #001628;
+
+    border-radius:
+        50%;
+}
+
+
+/* =========================================================
+   SATELLITE BLOCK
+   ========================================================= */
+
+.satellite-block {
+    position:
+        absolute;
+
+    z-index:
+        60;
+
+    top:
+        80px;
+
+    right:
+        18px;
+
+    width:
+        118px;
+
+    text-align:
+        center;
+}
+
+
+.satellite-icon {
+    position:
+        relative;
+
+    width:
+        65px;
+
+    height:
+        60px;
+
+    margin:
+        0 auto 5px;
+}
+
+
+.sat-piece {
+    position:
+        absolute;
+
+    width:
+        21px;
+
+    height:
+        21px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8df5ff,
+            #0ca9e5
+        );
+
+    border:
+        4px solid #001b36;
+
+    transform:
+        rotate(45deg);
+}
+
+
+.sat-a {
+    left:
+        4px;
+
+    top:
+        4px;
+}
+
+
+.sat-b {
+    left:
+        35px;
+
+    top:
+        4px;
+}
+
+
+.sat-c {
+    left:
+        4px;
+
+    top:
+        35px;
+}
+
+
+.sat-d {
+    left:
+        35px;
+
+    top:
+        35px;
+}
+
+
+.sat-body {
+    position:
+        absolute;
+
+    left:
+        28px;
+
+    top:
+        24px;
+
+    width:
+        10px;
+
+    height:
+        16px;
+
+    background:
+        #dffaff;
+
+    border:
+        3px solid #00223f;
+
+    z-index:
+        4;
+}
+
+
+.satellite-text {
+    display:
+        inline-block;
+
+    padding-bottom:
+        6px;
+
+    color:
+        #d2f7ff;
+
+    border-bottom:
+        3px solid #26d2ed;
+
+    font-size:
+        clamp(
+            7px,
+            1.7vw,
+            11px
+        );
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   OCEAN LABELS
+   ========================================================= */
+
+.ocean-label {
+    position:
+        absolute;
+
+    z-index:
+        35;
+
+    color:
+        #21d4f7;
+
+    text-shadow:
+        2px 2px #02446e;
+
+    letter-spacing:
+        4px;
+
+    font-size:
+        clamp(
+            10px,
+            2.4vw,
+            17px
+        );
+}
+
+
+.atlantic-label {
+    left:
+        50%;
+
+    top:
+        175px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.caribbean-label {
+    left:
+        50%;
+
+    bottom:
+        135px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =========================================================
+   CLOUDS
+   ========================================================= */
+
+.pixel-cloud {
+    position:
+        absolute;
+
+    z-index:
+        20;
+
+    width:
+        100px;
+
+    height:
+        45px;
+
+    opacity:
+        0.95;
+}
+
+
+.pixel-cloud span {
+    position:
+        absolute;
+
+    display:
+        block;
+
+    background:
+        #abe7f7;
+
+    border:
+        3px solid #55bade;
+
+    box-shadow:
+        4px 4px #064e77;
+}
+
+
+.pixel-cloud span:nth-child(1) {
+    width:
+        50px;
+
+    height:
+        20px;
+
+    left:
+        0;
+
+    top:
+        20px;
+}
+
+
+.pixel-cloud span:nth-child(2) {
+    width:
+        38px;
+
+    height:
+        36px;
+
+    left:
+        33px;
+
+    top:
+        3px;
+}
+
+
+.pixel-cloud span:nth-child(3) {
+    width:
+        46px;
+
+    height:
+        22px;
+
+    left:
+        63px;
+
+    top:
+        18px;
+}
+
+
+.cloud-left {
+    top:
+        145px;
+
+    left:
+        11%;
+}
+
+
+.cloud-right {
+    top:
+        180px;
+
+    right:
+        8%;
+
+    transform:
+        scale(0.65);
+}
+
+
+/* =========================================================
+   OCEAN WAVES
+   ========================================================= */
+
+.ocean-wave {
+    position:
+        absolute;
+
+    z-index:
+        15;
+
+    color:
+        #1ab5e1;
+
+    font-size:
+        25px;
+
+    letter-spacing:
+        5px;
+
+    opacity:
+        0.75;
+}
+
+
+.wave-1 {
+    left:
+        6%;
+
+    bottom:
+        150px;
+}
+
+
+.wave-2 {
+    left:
+        35%;
+
+    bottom:
+        100px;
+}
+
+
+.wave-3 {
+    right:
+        8%;
+
+    bottom:
+        165px;
+}
+
+
+.wave-4 {
+    left:
+        10%;
+
+    top:
+        245px;
+}
+
+
+/* =========================================================
+   ISLAND
+   ========================================================= */
+
+.island-stage {
+    position:
+        absolute;
+
+    z-index:
+        40;
+
+    left:
+        5%;
+
+    top:
+        225px;
+
+    width:
+        90%;
+
+    aspect-ratio:
+        1200 / 430;
+}
+
+
+.pr-island {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    overflow:
+        visible;
+
+    filter:
+        drop-shadow(
+            0 5px 0
+            #fff1a3
+        )
+        drop-shadow(
+            0 10px 0
+            #29dcf0
+        )
+        drop-shadow(
+            0 17px 0
+            rgba(0, 106, 158, 0.75)
+        );
+}
+
+
+.sand-coast {
+    stroke:
+        #fff0a0;
+
+    stroke-width:
+        14px;
+
+    stroke-linejoin:
+        round;
+}
+
+
+.landmass {
+    stroke:
+        #1e823d;
+
+    stroke-width:
+        15px;
+
+    stroke-linejoin:
+        round;
+}
+
+
+.terrain-line {
+    fill:
+        none;
+
+    stroke:
+        #258d3f;
+
+    stroke-width:
+        13px;
+
+    opacity:
+        0.7;
+}
+
+
+.mountain-back {
+    fill:
+        #79512e;
+}
+
+
+.mountain-front {
+    fill:
+        #a76c36;
+}
+
+
+.mountain-top {
+    fill:
+        #e6b563;
+}
+
+
+.svg-palms rect {
+    fill:
+        #81512d;
+}
+
+
+.svg-palms circle {
+    fill:
+        #0b6734;
+}
+
+
+.city-labels text {
+    fill:
+        white;
+
+    font-size:
+        22px;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    paint-order:
+        stroke;
+
+    stroke:
+        #093d31;
+
+    stroke-width:
+        8px;
+}
+
+
+.island-center-title text {
+    fill:
+        #f4fff7;
+
+    font-size:
+        40px;
+
+    letter-spacing:
+        6px;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    paint-order:
+        stroke;
+
+    stroke:
+        #1a6238;
+
+    stroke-width:
+        9px;
+}
+
+
+.white-mountains {
+    fill:
+        none;
+
+    stroke:
+        white;
+
+    stroke-width:
+        8px;
+
+    stroke-linecap:
+        square;
+}
+
+
+/* =========================================================
+   MAP MARKERS
+   ========================================================= */
+
+.marker-layer {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        100;
+
+    pointer-events:
+        none;
+}
+
+
+.marker {
+    position:
+        absolute;
+
+    width:
+        clamp(
+            20px,
+            4vw,
+            30px
+        );
+
+    height:
+        clamp(
+            20px,
+            4vw,
+            30px
+        );
+
+    padding:
+        0;
+
+    cursor:
+        pointer;
+
+    pointer-events:
+        auto;
+
+    border:
+        4px solid #06131d;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform:
+        translate(-50%, -100%)
+        rotate(-45deg);
+
+    box-shadow:
+        3px 3px 0 #02233d,
+        inset 2px 2px rgba(255, 255, 255, 0.45);
+}
+
+
+.marker::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        #06151f;
+
+    border-radius:
+        50%;
+}
+
+
+.marker.low {
+    background:
+        var(--green);
+}
+
+
+.marker.caution {
+    background:
+        var(--yellow);
+}
+
+
+.marker.high {
+    background:
+        var(--red);
+}
+
+
+.marker.advisory {
+    background:
+        var(--orange);
+}
+
+
+.marker.unknown {
+    background:
+        #a8bac3;
+}
+
+
+.marker.selected {
+    outline:
+        4px solid white;
+
+    outline-offset:
+        4px;
+
+    z-index:
+        300;
+}
+
+
+/* =========================================================
+   OFFSHORE ISLANDS
+   ========================================================= */
+
+.offshore-island {
+    position:
+        absolute;
+
+    z-index:
+        30;
+
+    background:
+        #4ead48;
+
+    border:
+        5px solid #ffe17b;
+
+    box-shadow:
+        0 0 0 6px #13bce2,
+        0 0 0 12px rgba(19, 188, 226, 0.3);
+}
+
+
+.island-east {
+    right:
+        5%;
+
+    top:
+        355px;
+
+    width:
+        55px;
+
+    height:
+        20px;
+
+    transform:
+        rotate(-12deg);
+}
+
+
+.island-south-east {
+    right:
+        11%;
+
+    bottom:
+        125px;
+
+    width:
+        75px;
+
+    height:
+        30px;
+
+    transform:
+        rotate(-13deg);
+}
+
+
+.island-south {
+    left:
+        59%;
+
+    bottom:
+        66px;
+
+    width:
+        40px;
+
+    height:
+        18px;
+
+    transform:
+        rotate(-10deg);
+}
+
+
+.tiny-island-pin {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        12px;
+
+    width:
+        19px;
+
+    height:
+        19px;
+
+    transform:
+        translateX(-50%)
+        rotate(-45deg);
+
+    border:
+        3px solid #06131d;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    background:
+        var(--green);
+}
+
+
+/* =========================================================
+   MAP DECORATIONS
+   ========================================================= */
+
+.pixel-whale {
+    position:
+        absolute;
+
+    z-index:
+        30;
+
+    left:
+        10%;
+
+    bottom:
+        120px;
+
+    font-size:
+        clamp(
+            24px,
+            5vw,
+            40px
+        );
+
+    filter:
+        hue-rotate(130deg)
+        saturate(0.6);
+}
+
+
+.pixel-boat {
+    position:
+        absolute;
+
+    z-index:
+        30;
+
+    right:
+        12%;
+
+    bottom:
+        100px;
+
+    font-size:
+        clamp(
+            27px,
+            5vw,
+            44px
+        );
+
+    filter:
+        drop-shadow(
+            4px 4px
+            #003858
+        );
+}
+
+
+/* =========================================================
+   LEGEND
+   ========================================================= */
+
+.map-legend {
+    position:
+        absolute;
+
+    z-index:
+        80;
+
+    left:
+        15px;
+
+    bottom:
+        14px;
+
+    padding:
+        12px 15px;
+
+    background:
+        #002a4e;
+
+    border:
+        5px solid #2bd7f0;
+
+    box-shadow:
+        inset 0 0 0 3px #044c74,
+        5px 5px #00172d;
+}
+
+
+.legend-row {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    min-height:
+        30px;
+
+    font-size:
+        clamp(
+            7px,
+            1.8vw,
+            11px
+        );
+}
+
+
+.legend-map-pin {
+    position:
+        relative;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    border:
+        3px solid #06131d;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform:
+        rotate(-45deg);
+}
+
+
+.legend-map-pin::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        #07141c;
+
+    border-radius:
+        50%;
+}
+
+
+.legend-map-pin.low {
+    background:
+        var(--green);
+}
+
+
+.legend-map-pin.caution {
+    background:
+        var(--yellow);
+}
+
+
+.legend-map-pin.high {
+    background:
+        var(--red);
+}
+
+
+.legend-map-pin.advisory {
+    background:
+        var(--orange);
+}
+
+
+.legend-low {
+    color:
+        #6ef17b;
+}
+
+
+.legend-caution {
+    color:
+        #ffe358;
+}
+
+
+.legend-high {
+    color:
+        #ff6b61;
+}
+
+
+.legend-advisory {
+    color:
+        #ffa264;
+}
+
+
+/* =========================================================
+   MAP SCALE
+   ========================================================= */
+
+.map-scale {
+    position:
+        absolute;
+
+    z-index:
+        60;
+
+    right:
+        20px;
+
+    bottom:
+        22px;
+
+    width:
+        220px;
+
+    color:
+        #d8f8ff;
+
+    font-size:
+        clamp(
+            7px,
+            1.5vw,
+            9px
+        );
+}
+
+
+.scale-numbers {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 0 8px;
+}
+
+
+.scale-line {
+    height:
+        12px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    border-top:
+        4px solid #d8f8ff;
+}
+
+
+.scale-line span {
+    width:
+        4px;
+
+    height:
+        13px;
+
+    margin-top:
+        -5px;
+
+    background:
+        #d8f8ff;
+}
+
+
+/* =========================================================
+   LOWER DASHBOARD
+   ========================================================= */
+
+.bottom-dashboard {
+    display:
+        grid;
+
+    grid-template-columns:
+        165px
+        minmax(0, 1fr);
+
+    gap:
+        10px;
+
+    margin:
+        9px 4px 0;
+
+    padding:
+        11px;
+
+    background:
+        linear-gradient(
+            #50d9f2,
+            #0daada
+        );
+
+    border:
+        5px solid #002548;
+
+    box-shadow:
+        inset 0 5px #8af4ff,
+        inset 0 -6px #0473aa;
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+.dashboard-menu {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        9px;
+}
+
+
+.dashboard-button {
+    min-height:
+        77px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        48px
+        1fr;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+
+    padding:
+        7px 8px;
+
+    color:
+        #06172a;
+
+    background:
+        linear-gradient(
+            #32c7ef,
+            #11a9dc
+        );
+
+    border:
+        5px solid #003051;
+
+    box-shadow:
+        inset 0 4px #7cf0ff,
+        inset 0 -6px #087eaf,
+        5px 5px #00385c;
+
+    cursor:
+        pointer;
+
+    font-size:
+        clamp(
+            8px,
+            1.8vw,
+            12px
+        );
+
+    text-align:
+        left;
+}
+
+
+.dashboard-button.active {
+    background:
+        linear-gradient(
+            #ff9c87,
+            #f27766
+        );
+
+    box-shadow:
+        inset 0 4px #ffc1ae,
+        inset 0 -6px #c9524a,
+        5px 5px #00385c;
+}
+
+
+.dashboard-button:active {
+    transform:
+        translate(
+            2px,
+            2px
+        );
+}
+
+
+.dashboard-icon {
+    font-size:
+        clamp(
+            21px,
+            4vw,
+            31px
+        );
+
+    text-align:
+        center;
+}
+
+
+.status-list-icon {
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            38px
+        );
+}
+
+
+/* =========================================================
+   LARGE BEACH INFORMATION CARD
+   ========================================================= */
+
+.beach-dashboard-card {
+    min-width:
+        0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr;
+
+    grid-template-rows:
+        auto
+        auto;
+
+    gap:
+        9px;
+
+    padding:
+        9px;
+
+    background:
+        #c7f7ff;
+
+    border:
+        5px solid #003154;
+
+    box-shadow:
+        inset 0 0 0 3px #72eaff;
+}
+
+
+/* =========================================================
+   CONDITION PANEL
+   ========================================================= */
+
+.beach-condition-panel {
+    min-width:
+        0;
+
+    overflow:
+        hidden;
+
+    border:
+        4px solid #255b65;
+
+    background:
+        #ddf9ff;
+
+    box-shadow:
+        inset 0 0 0 2px #b7eff8;
+}
+
+
+/* =========================================================
+   BEACH SELECTOR
+   ========================================================= */
+
+.beach-selector {
+    min-height:
+        78px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        54px
+        minmax(0, 1fr)
+        54px;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        7px 10px;
+
+    background:
+        linear-gradient(
+            #b1fc8d,
+            #87dc6b
+        );
+
+    border-bottom:
+        4px solid #276542;
+}
+
+
+.beach-arrow {
+    width:
+        48px;
+
+    height:
+        48px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0;
+
+    color:
+        #092d1d;
+
+    background:
+        #71cf59;
+
+    border:
+        4px solid #245636;
+
+    cursor:
+        pointer;
+
+    font-size:
+        14px;
+
+    box-shadow:
+        inset 0 4px #bdff9e,
+        inset 0 -4px #469940,
+        3px 3px #184331;
+}
+
+
+.beach-arrow:hover {
+    background:
+        #88e26c;
+}
+
+
+.beach-arrow:active {
+    transform:
+        translate(
+            2px,
+            2px
+        );
+}
+
+
+.beach-name-display {
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    color:
+        #081e1a;
+
+    font-size:
+        clamp(
+            11px,
+            2.5vw,
+            18px
+        );
+
+    line-height:
+        1.45;
+
+    text-align:
+        center;
+}
+
+
+#beachName {
+    overflow-wrap:
+        anywhere;
+}
+
+
+.beach-location-pin {
+    position:
+        relative;
+
+    flex:
+        0 0 auto;
+
+    width:
+        29px;
+
+    height:
+        29px;
+
+    background:
+        #45e85b;
+
+    border:
+        4px solid #10261c;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform:
+        rotate(-45deg);
+}
+
+
+.beach-location-pin::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        #0d2118;
+
+    border-radius:
+        50%;
+}
+
+
+/* =========================================================
+   MAIN STATUS
+   ========================================================= */
+
+.main-status {
+    min-height:
+        61px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        10px;
+
+    color:
+        #071d19;
+
+    text-align:
+        center;
+
+    font-size:
+        clamp(
+            11px,
+            2.5vw,
+            17px
+        );
+
+    line-height:
+        1.4;
+
+    border-bottom:
+        4px solid #397d59;
+}
+
+
+.main-status.low {
+    background:
+        #69ed71;
+}
+
+
+.main-status.caution {
+    background:
+        #ffe15d;
+}
+
+
+.main-status.high {
+    background:
+        #ff6a61;
+}
+
+
+.main-status.advisory {
+    background:
+        #ffa063;
+}
+
+
+.main-status.unknown {
+    background:
+        #bacdd4;
+}
+
+
+/* =========================================================
+   CONDITION ROWS
+   ========================================================= */
+
+.condition-row {
+    min-height:
+        62px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        44px
+        150px
+        minmax(0, 1fr);
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        10px 15px;
+
+    color:
+        #0a2d4d;
+
+    background:
+        #e6faff;
+
+    border-bottom:
+        3px solid #a9d4df;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            13px,
+            2.2vw,
+            17px
+        );
+
+    font-weight:
+        800;
+
+    line-height:
+        1.35;
+}
+
+
+.condition-row:last-child {
+    border-bottom:
+        0;
+}
+
+
+.condition-icon {
+    font-size:
+        clamp(
+            20px,
+            3vw,
+            27px
+        );
+
+    text-align:
+        center;
+}
+
+
+.condition-label {
+    white-space:
+        nowrap;
+
+    color:
+        #154362;
+}
+
+
+.condition-value {
+    min-width:
+        0;
+
+    text-align:
+        right;
+
+    color:
+        #071a2a;
+
+    font-weight:
+        800;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+/* =========================================================
+   COMMUNITY MESSAGE
+   ========================================================= */
+
+.community-message {
+    min-height:
+        82px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        60px
+        1fr
+        60px;
+
+    align-items:
+        center;
+
+    padding:
+        10px 14px;
+
+    color:
+        #073041;
+
+    background:
+        linear-gradient(
+            90deg,
+            #69d7ca,
+            #86eadc,
+            #69d7ca
+        );
+
+    border:
+        4px solid #225e67;
+
+    text-align:
+        center;
+
+    font-size:
+        clamp(
+            9px,
+            2vw,
+            13px
+        );
+
+    line-height:
+        1.5;
+}
+
+
+.community-palm {
+    font-size:
+        clamp(
+            26px,
+            5vw,
+            40px
+        );
+}
+
+
+/* =========================================================
+   DEVICE BOTTOM
+   ========================================================= */
+
+.device-bottom {
+    min-height:
+        72px;
+
+    margin:
+        12px -14px 0;
+
+    padding:
+        12px 55px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        45px
+        1fr
+        45px;
+
+    align-items:
+        center;
+
+    gap:
+        45px;
+
+    background:
+        linear-gradient(
+            #0871a9,
+            #03446f
+        );
+
+    border-top:
+        5px solid #002548;
+}
+
+
+.device-speaker {
+    justify-self:
+        center;
+
+    width:
+        min(
+            260px,
+            100%
+        );
+
+    height:
+        25px;
+
+    background:
+        #00182d;
+
+    border:
+        4px solid #00578c;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        inset 0 3px #000b15;
+}
+
+
+.device-bottom-button {
+    width:
+        40px;
+
+    height:
+        31px;
+
+    background:
+        #063d66;
+
+    border:
+        5px solid #001c34;
+
+    box-shadow:
+        inset 0 3px #0c76ab;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.pixel-modal {
+    width:
+        min(
+            92%,
+            520px
+        );
+
+    max-height:
+        80vh;
+
+    overflow-y:
+        auto;
+
+    padding:
+        15px;
+
+    color:
+        #071b29;
+
+    background:
+        #e3faff;
+
+    border:
+        6px solid #00416a;
+
+    box-shadow:
+        9px 9px #001a2c;
+}
+
+
+.pixel-modal::backdrop {
+    background:
+        rgba(
+            0,
+            10,
+            20,
+            0.78
+        );
+}
+
+
+.modal-close {
+    float:
+        right;
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    color:
+        #071b29;
+
+    background:
+        var(--coral);
+
+    border:
+        4px solid #612c2a;
+
+    cursor:
+        pointer;
+}
+
+
+#modalContent {
+    padding-top:
+        45px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.55;
+}
+
+
+#modalContent h2 {
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    color:
+        #004a74;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.6;
+}
+
+
+#modalContent strong {
+    color:
+        #023b5e;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 540px) {
+
+
+    body {
+        padding:
+            3px;
+    }
+
+
+    .app-shell {
+        padding:
+            9px 7px 0;
+
+        border-width:
+            4px;
+
+        border-radius:
+            18px;
+    }
+
+
+    .device-notch {
+        height:
+            16px;
+    }
+
+
+    .top-status-bar {
+        height:
+            45px;
+
+        padding:
+            5px 18px;
+    }
+
+
+    .signal-bars span {
+        width:
+            5px;
+    }
+
+
+    .signal-bars span:nth-child(1) {
+        height:
+            7px;
+    }
+
+
+    .signal-bars span:nth-child(2) {
+        height:
+            11px;
+    }
+
+
+    .signal-bars span:nth-child(3) {
+        height:
+            15px;
+    }
+
+
+    .signal-bars span:nth-child(4) {
+        height:
+            20px;
+    }
+
+
+    .battery {
+        width:
+            37px;
+
+        height:
+            21px;
+
+        border-width:
+            3px;
+    }
+
+
+    .title-panel {
+        min-height:
+            72px;
+
+        grid-template-columns:
+            47px
+            1fr
+            47px;
+
+        padding:
+            5px;
+    }
+
+
+    .title-panel h1 {
+        font-size:
+            20px;
+
+        letter-spacing:
+            -2px;
+    }
+
+
+    .title-art {
+        font-size:
+            32px;
+    }
+
+
+    .map-panel {
+        height:
+            590px;
+    }
+
+
+    .live-banner {
+        top:
+            14px;
+
+        width:
+            68%;
+
+        padding:
+            11px 5px;
+
+        border-width:
+            4px;
+
+        font-size:
+            10px;
+    }
+
+
+    .banner-spark {
+        top:
+            25px;
+
+        font-size:
+            18px;
+    }
+
+
+    .compass {
+        top:
+            72px;
+
+        left:
+            10px;
+
+        transform:
+            scale(0.75);
+
+        transform-origin:
+            top left;
+    }
+
+
+    .satellite-block {
+        top:
+            72px;
+
+        right:
+            4px;
+
+        width:
+            84px;
+
+        transform:
+            scale(0.78);
+
+        transform-origin:
+            top right;
+    }
+
+
+    .atlantic-label {
+        top:
+            150px;
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            2px;
+    }
+
+
+    .island-stage {
+        top:
+            205px;
+
+        left:
+            4%;
+
+        width:
+            92%;
+    }
+
+
+    .city-labels text {
+        font-size:
+            19px;
+    }
+
+
+    .island-center-title text {
+        font-size:
+            33px;
+    }
+
+
+    .caribbean-label {
+        bottom:
+            125px;
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            2px;
+    }
+
+
+    .map-legend {
+        left:
+            8px;
+
+        bottom:
+            9px;
+
+        padding:
+            8px 9px;
+
+        border-width:
+            4px;
+    }
+
+
+    .legend-row {
+        min-height:
+            23px;
+
+        gap:
+            8px;
+
+        font-size:
+            6px;
+    }
+
+
+    .legend-map-pin {
+        width:
+            16px;
+
+        height:
+            16px;
+
+        border-width:
+            2px;
+    }
+
+
+    .map-scale {
+        right:
+            10px;
+
+        bottom:
+            18px;
+
+        width:
+            145px;
+
+        font-size:
+            6px;
+    }
+
+
+    .pixel-whale {
+        bottom:
+            112px;
+    }
+
+
+    .pixel-boat {
+        bottom:
+            103px;
+    }
+
+
+    /*
+        Smaller left menu so the live information
+        gets more width on phones.
+    */
+
+    .bottom-dashboard {
+        grid-template-columns:
+            92px
+            minmax(0, 1fr);
+
+        gap:
+            6px;
+
+        padding:
+            7px;
+
+        border-width:
+            4px;
+    }
+
+
+    .dashboard-menu {
+        gap:
+            6px;
+    }
+
+
+    .dashboard-button {
+        min-height:
+            68px;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            3px;
+
+        padding:
+            5px 3px;
+
+        text-align:
+            center;
+
+        border-width:
+            4px;
+
+        font-size:
+            6px;
+    }
+
+
+    .dashboard-icon {
+        font-size:
+            21px;
+    }
+
+
+    /*
+        Entire right section is now information.
+    */
+
+    .beach-dashboard-card {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            6px;
+
+        padding:
+            6px;
+
+        border-width:
+            4px;
+    }
+
+
+    .beach-selector {
+        min-height:
+            64px;
+
+        grid-template-columns:
+            36px
+            minmax(0, 1fr)
+            36px;
+
+        gap:
+            4px;
+
+        padding:
+            5px;
+    }
+
+
+    .beach-arrow {
+        width:
+            34px;
+
+        height:
+            42px;
+
+        border-width:
+            3px;
+
+        font-size:
+            9px;
+    }
+
+
+    .beach-location-pin {
+        width:
+            21px;
+
+        height:
+            21px;
+
+        border-width:
+            3px;
+    }
+
+
+    .beach-name-display {
+        gap:
+            6px;
+
+        font-size:
+            9px;
+    }
+
+
+    .main-status {
+        min-height:
+            49px;
+
+        font-size:
+            9px;
+    }
+
+
+    .condition-row {
+        min-height:
+            53px;
+
+        grid-template-columns:
+            27px
+            88px
+            minmax(0, 1fr);
+
+        gap:
+            5px;
+
+        padding:
+            6px 7px;
+
+        font-size:
+            11px;
+    }
+
+
+    .condition-icon {
+        font-size:
+            17px;
+    }
+
+
+    .condition-label {
+        white-space:
+            normal;
+
+        line-height:
+            1.25;
+    }
+
+
+    .condition-value {
+        line-height:
+            1.25;
+    }
+
+
+    .community-message {
+        min-height:
+            62px;
+
+        grid-template-columns:
+            37px
+            1fr
+            37px;
+
+        padding:
+            6px;
+
+        font-size:
+            6px;
+    }
+
+
+    .community-palm {
+        font-size:
+            25px;
+    }
+
+
+    .device-bottom {
+        min-height:
+            52px;
+
+        margin:
+            8px -7px 0;
+
+        padding:
+            8px 25px;
+
+        gap:
+            18px;
+    }
+
+
+    .device-speaker {
+        height:
+            18px;
+    }
+
+
+    .device-bottom-button {
+        width:
+            29px;
+
+        height:
+            23px;
+
+        border-width:
+            4px;
+    }
+
+}

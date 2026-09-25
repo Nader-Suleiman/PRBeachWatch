@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#039fe0"
+    >
+
+    <title>PR Beach Watch</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-shell">
+
+
+    <!-- DEVICE TOP -->
+
+    <div class="device-notch"></div>
+
+
+    <div class="top-status-bar">
+
+
+        <div class="signal-bars">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div
+            id="clock"
+            class="top-clock"
+        >
+            8:15 AM
+        </div>
+
+
+        <div class="battery-area">
+
+            <div class="battery">
+
+                <div class="battery-fill"></div>
+
+            </div>
+
+            <span>
+                100%
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <header class="title-panel">
+
+        <div class="title-art palm-title">
+            🌴
+        </div>
+
+        <h1>
+            PR BEACH WATCH
+        </h1>
+
+        <div class="title-art sunset-title">
+            🌅
+        </div>
+
+    </header>
+
+
+    <!-- MAP -->
+
+    <section
+        id="mapSection"
+        class="map-panel"
+    >
+
+
+        <div class="live-banner">
+            BEACH CONDITIONS LIVE
+        </div>
+
+
+        <div class="banner-spark spark-left">
+            ✦
+        </div>
+
+
+        <div class="banner-spark spark-right">
+            ✦
+        </div>
+
+
+        <!-- COMPASS -->
+
+        <div class="compass">
+
+
+            <div class="compass-label north-label">
+                N
+            </div>
+
+            <div class="compass-label west-label">
+                W
+            </div>
+
+            <div class="compass-label east-label">
+                E
+            </div>
+
+            <div class="compass-label south-label">
+                S
+            </div>
+
+
+            <div class="compass-circle">
+
+                <div class="compass-pointer pointer-red"></div>
+
+                <div class="compass-pointer pointer-white"></div>
+
+                <div class="compass-center"></div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SATELLITE -->
+
+        <div class="satellite-block">
+
+
+            <div class="satellite-icon">
+
+                <span class="sat-piece sat-a"></span>
+                <span class="sat-piece sat-b"></span>
+                <span class="sat-piece sat-c"></span>
+                <span class="sat-piece sat-d"></span>
+
+                <span class="sat-body"></span>
+
+            </div>
+
+
+            <div class="satellite-text">
+
+                CLEAN
+                <br>
+                BEACHES
+                <br>
+                SAFER
+                <br>
+                DAYS
+
+            </div>
+
+
+        </div>
+
+
+        <!-- OCEAN -->
+
+        <div class="ocean-label atlantic-label">
+            ATLANTIC OCEAN
+        </div>
+
+
+        <div class="pixel-cloud cloud-left">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="pixel-cloud cloud-right">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="ocean-wave wave-1">
+            ≈≈
+        </div>
+
+
+        <div class="ocean-wave wave-2">
+            ≈≈≈
+        </div>
+
+
+        <div class="ocean-wave wave-3">
+            ≈≈
+        </div>
+
+
+        <div class="ocean-wave wave-4">
+            ≈≈≈
+        </div>
+
+
+        <!-- PUERTO RICO -->
+
+        <div class="island-stage">
+
+
+            <svg
+                class="pr-island"
+                viewBox="0 0 1200 430"
+                preserveAspectRatio="none"
+                aria-label="Puerto Rico"
+                role="img"
+            >
+
+
+                <defs>
+
+
+                    <pattern
+                        id="grassPattern"
+                        width="28"
+                        height="28"
+                        patternUnits="userSpaceOnUse"
+                    >
+
+                        <rect
+                            width="28"
+                            height="28"
+                            fill="#42ad43"
+                        />
+
+                        <rect
+                            x="0"
+                            y="0"
+                            width="9"
+                            height="9"
+                            fill="#2c9137"
+                        />
+
+                        <rect
+                            x="18"
+                            y="7"
+                            width="10"
+                            height="9"
+                            fill="#5bc151"
+                        />
+
+                        <rect
+                            x="8"
+                            y="19"
+                            width="10"
+                            height="9"
+                            fill="#267d32"
+                        />
+
+                    </pattern>
+
+
+                    <pattern
+                        id="sandPattern"
+                        width="20"
+                        height="20"
+                        patternUnits="userSpaceOnUse"
+                    >
+
+                        <rect
+                            width="20"
+                            height="20"
+                            fill="#ffe078"
+                        />
+
+                        <rect
+                            width="7"
+                            height="7"
+                            fill="#fff0a0"
+                        />
+
+                        <rect
+                            x="13"
+                            y="13"
+                            width="7"
+                            height="7"
+                            fill="#e9bc50"
+                        />
+
+                    </pattern>
+
+
+                </defs>
+
+
+                <!-- SAND -->
+
+                <path
+                    class="sand-coast"
+                    d="
+                        M55 209
+                        L95 164
+                        L159 151
+                        L201 122
+                        L269 126
+                        L333 100
+                        L401 106
+                        L460 82
+                        L537 95
+                        L610 74
+                        L684 91
+                        L751 75
+                        L823 102
+                        L901 98
+                        L958 123
+                        L1034 132
+                        L1093 165
+                        L1154 193
+                        L1143 243
+                        L1091 259
+                        L1024 276
+                        L953 291
+                        L884 300
+                        L808 325
+                        L731 322
+                        L651 340
+                        L571 333
+                        L500 346
+                        L420 331
+                        L345 342
+                        L272 319
+                        L195 317
+                        L132 292
+                        L82 269
+                        Z
+                    "
+                    fill="url(#sandPattern)"
+                />
+
+
+                <!-- LAND -->
+
+                <path
+                    class="landmass"
+                    d="
+                        M75 209
+                        L112 177
+                        L170 166
+                        L210 142
+                        L274 143
+                        L337 118
+                        L402 123
+                        L462 101
+                        L535 113
+                        L611 92
+                        L684 110
+                        L754 95
+                        L819 119
+                        L895 116
+                        L952 139
+                        L1024 149
+                        L1080 177
+                        L1131 198
+                        L1118 226
+                        L1072 243
+                        L1009 256
+                        L940 272
+                        L874 278
+                        L802 303
+                        L727 302
+                        L651 319
+                        L573 313
+                        L500 325
+                        L425 312
+                        L352 321
+                        L282 299
+                        L209 297
+                        L146 275
+                        L97 255
+                        Z
+                    "
+                    fill="url(#grassPattern)"
+                />
+
+
+                <!-- TERRAIN -->
+
+                <path
+                    class="terrain-line"
+                    d="
+                        M210 255
+                        Q330 190 460 240
+                        Q600 290 730 210
+                        Q870 150 1010 230
+                    "
+                />
+
+
+                <path
+                    class="terrain-line"
+                    d="
+                        M155 225
+                        Q270 175 370 215
+                        Q470 250 590 205
+                        Q730 160 875 220
+                    "
+                />
+
+
+                <!-- MOUNTAINS -->
+
+                <g class="mountain-group">
+
+
+                    <polygon
+                        points="300,267 390,154 476,267"
+                        class="mountain-back"
+                    />
+
+
+                    <polygon
+                        points="325,267 390,188 450,267"
+                        class="mountain-front"
+                    />
+
+
+                    <polygon
+                        points="365,185 390,154 416,187"
+                        class="mountain-top"
+                    />
+
+
+                    <polygon
+                        points="480,245 560,132 644,245"
+                        class="mountain-back"
+                    />
+
+
+                    <polygon
+                        points="505,245 560,168 620,245"
+                        class="mountain-front"
+                    />
+
+
+                    <polygon
+                        points="536,166 560,132 585,168"
+                        class="mountain-top"
+                    />
+
+
+                </g>
+
+
+                <!-- PALMS -->
+
+                <g class="svg-palms">
+
+
+                    <g transform="translate(185 220)">
+
+                        <rect
+                            x="-4"
+                            y="12"
+                            width="8"
+                            height="36"
+                        ></rect>
+
+                        <circle
+                            cx="-14"
+                            cy="12"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="13"
+                            cy="10"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="0"
+                            cy="1"
+                            r="13"
+                        ></circle>
+
+                    </g>
+
+
+                    <g transform="translate(260 265)">
+
+                        <rect
+                            x="-4"
+                            y="12"
+                            width="8"
+                            height="36"
+                        ></rect>
+
+                        <circle
+                            cx="-14"
+                            cy="12"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="13"
+                            cy="10"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="0"
+                            cy="1"
+                            r="13"
+                        ></circle>
+
+                    </g>
+
+
+                    <g transform="translate(700 260)">
+
+                        <rect
+                            x="-4"
+                            y="12"
+                            width="8"
+                            height="36"
+                        ></rect>
+
+                        <circle
+                            cx="-14"
+                            cy="12"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="13"
+                            cy="10"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="0"
+                            cy="1"
+                            r="13"
+                        ></circle>
+
+                    </g>
+
+
+                    <g transform="translate(775 245)">
+
+                        <rect
+                            x="-4"
+                            y="12"
+                            width="8"
+                            height="36"
+                        ></rect>
+
+                        <circle
+                            cx="-14"
+                            cy="12"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="13"
+                            cy="10"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="0"
+                            cy="1"
+                            r="13"
+                        ></circle>
+
+                    </g>
+
+
+                    <g transform="translate(840 265)">
+
+                        <rect
+                            x="-4"
+                            y="12"
+                            width="8"
+                            height="36"
+                        ></rect>
+
+                        <circle
+                            cx="-14"
+                            cy="12"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="13"
+                            cy="10"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="0"
+                            cy="1"
+                            r="13"
+                        ></circle>
+
+                    </g>
+
+
+                    <g transform="translate(940 230)">
+
+                        <rect
+                            x="-4"
+                            y="12"
+                            width="8"
+                            height="36"
+                        ></rect>
+
+                        <circle
+                            cx="-14"
+                            cy="12"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="13"
+                            cy="10"
+                            r="12"
+                        ></circle>
+
+                        <circle
+                            cx="0"
+                            cy="1"
+                            r="13"
+                        ></circle>
+
+                    </g>
+
+
+                </g>
+
+
+                <!-- CITY LABELS -->
+
+                <g class="city-labels">
+
+                    <text
+                        x="115"
+                        y="225"
+                    >
+                        ● RINCÓN
+                    </text>
+
+
+                    <text
+                        x="850"
+                        y="170"
+                    >
+                        ■ SAN JUAN
+                    </text>
+
+
+                    <text
+                        x="955"
+                        y="245"
+                    >
+                        FAJARDO ●
+                    </text>
+
+
+                    <text
+                        x="345"
+                        y="320"
+                    >
+                        ■ PONCE
+                    </text>
+
+                </g>
+
+
+                <!-- TITLE -->
+
+                <g class="island-center-title">
+
+
+                    <path
+                        class="white-mountains"
+                        d="
+                            M517 230
+                            L551 192
+                            L580 219
+                            L609 175
+                            L646 220
+                            L675 195
+                            L714 234
+                        "
+                    />
+
+
+                    <text
+                        x="615"
+                        y="284"
+                        text-anchor="middle"
+                    >
+                        PUERTO RICO
+                    </text>
+
+
+                </g>
+
+
+            </svg>
+
+
+            <div
+                id="markers"
+                class="marker-layer"
+            ></div>
+
+
+        </div>
+
+
+        <!-- ISLANDS -->
+
+        <div class="offshore-island island-east"></div>
+
+        <div class="offshore-island island-south-east"></div>
+
+
+        <div class="offshore-island island-south">
+
+            <div class="tiny-island-pin"></div>
+
+        </div>
+
+
+        <!-- CARIBBEAN -->
+
+        <div class="ocean-label caribbean-label">
+            CARIBBEAN SEA
+        </div>
+
+
+        <div class="pixel-whale">
+            🐋
+        </div>
+
+
+        <div class="pixel-boat">
+            ⛵
+        </div>
+
+
+        <!-- LEGEND -->
+
+        <div class="map-legend">
+
+
+            <div class="legend-row">
+
+                <span class="legend-map-pin low"></span>
+
+                <span class="legend-low">
+                    LOW RISK
+                </span>
+
+            </div>
+
+
+            <div class="legend-row">
+
+                <span class="legend-map-pin caution"></span>
+
+                <span class="legend-caution">
+                    CAUTION
+                </span>
+
+            </div>
+
+
+            <div class="legend-row">
+
+                <span class="legend-map-pin high"></span>
+
+                <span class="legend-high">
+                    HIGH RISK
+                </span>
+
+            </div>
+
+
+            <div class="legend-row">
+
+                <span class="legend-map-pin advisory"></span>
+
+                <span class="legend-advisory">
+                    ADVISORY
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SCALE -->
+
+        <div class="map-scale">
+
+
+            <div class="scale-numbers">
+
+                <span>0</span>
+
+                <span>25</span>
+
+                <span>50</span>
+
+                <span>75 Mi</span>
+
+            </div>
+
+
+            <div class="scale-line">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- LOWER DASHBOARD -->
+
+    <section class="bottom-dashboard">
+
+
+        <nav class="dashboard-menu">
+
+
+            <button
+                id="mapBtn"
+                class="dashboard-button active"
+                type="button"
+            >
+
+                <span class="dashboard-icon">
+                    🗺️
+                </span>
+
+                <span>
+                    MAP
+                </span>
+
+            </button>
+
+
+            <button
+                id="statusBtn"
+                class="dashboard-button"
+                type="button"
+            >
+
+                <span class="dashboard-icon status-list-icon">
+                    ☷
+                </span>
+
+                <span>
+                    STATUS
+                </span>
+
+            </button>
+
+
+            <button
+                id="alertsBtn"
+                class="dashboard-button"
+                type="button"
+            >
+
+                <span class="dashboard-icon">
+                    🚨
+                </span>
+
+                <span>
+                    ALERTS
+                </span>
+
+            </button>
+
+
+            <button
+                id="infoBtn"
+                class="dashboard-button"
+                type="button"
+            >
+
+                <span class="dashboard-icon">
+                    ⓘ
+                </span>
+
+                <span>
+                    INFO
+                </span>
+
+            </button>
+
+
+        </nav>
+
+
+        <!-- BEACH INFORMATION -->
+
+        <article class="beach-dashboard-card">
+
+
+            <div class="beach-condition-panel">
+
+
+                <!-- BEACH NAME -->
+
+                <div class="beach-selector">
+
+
+                    <button
+                        id="prevBeachBtn"
+                        class="beach-arrow"
+                        type="button"
+                        aria-label="Previous beach"
+                        title="Previous beach"
+                    >
+                        ◀
+                    </button>
+
+
+                    <div class="beach-name-display">
+
+                        <span class="beach-location-pin"></span>
+
+                        <span id="beachName">
+                            Crash Boat
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        id="nextBeachBtn"
+                        class="beach-arrow"
+                        type="button"
+                        aria-label="Next beach"
+                        title="Next beach"
+                    >
+                        ▶
+                    </button>
+
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div
+                    id="status"
+                    class="main-status unknown"
+                >
+                    CHECK CONDITIONS
+                </div>
+
+
+                <!-- RIP -->
+
+                <div class="condition-row">
+
+                    <span class="condition-icon">
+                        🌊
+                    </span>
+
+                    <span class="condition-label">
+                        Rip Current:
+                    </span>
+
+                    <span
+                        id="rip"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- SURF -->
+
+                <div class="condition-row">
+
+                    <span class="condition-icon">
+                        〰
+                    </span>
+
+                    <span class="condition-label">
+                        Surf:
+                    </span>
+
+                    <span
+                        id="surf"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- WATER -->
+
+                <div class="condition-row condition-row-water">
+
+                    <span class="condition-icon">
+                        💧
+                    </span>
+
+                    <span class="condition-label">
+                        Water Quality:
+                    </span>
+
+                    <span
+                        id="water"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- NWS OFFICIAL ISSUE TIME -->
+
+                <div class="condition-row">
+
+                    <span class="condition-icon">
+                        🌐
+                    </span>
+
+                    <span class="condition-label">
+                        NWS Issued:
+                    </span>
+
+                    <span
+                        id="nwsIssued"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- DRNA SAMPLE -->
+
+                <div class="condition-row">
+
+                    <span class="condition-icon">
+                        🧪
+                    </span>
+
+                    <span class="condition-label">
+                        DRNA Sample:
+                    </span>
+
+                    <span
+                        id="drnaSample"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- DRNA NOTICE -->
+
+                <div class="condition-row">
+
+                    <span class="condition-icon">
+                        📄
+                    </span>
+
+                    <span class="condition-label">
+                        DRNA Notice:
+                    </span>
+
+                    <span
+                        id="drnaNotice"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- APP CHECK -->
+
+                <div class="condition-row">
+
+                    <span class="condition-icon">
+                        ◷
+                    </span>
+
+                    <span class="condition-label">
+                        Checked:
+                    </span>
+
+                    <span
+                        id="checked"
+                        class="condition-value"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="community-message">
+
+                <span class="community-palm">
+                    🌴
+                </span>
+
+
+                <span>
+
+                    SAFE BEACHES
+                    <br>
+                    STRONGER COMMUNITIES
+
+                </span>
+
+
+                <span class="community-palm">
+                    🌴
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+    </section>
+
+
+    <!-- DEVICE BOTTOM -->
+
+    <div class="device-bottom">
+
+        <div class="device-bottom-button"></div>
+
+        <div class="device-speaker"></div>
+
+        <div class="device-bottom-button"></div>
+
+    </div>
+
+
+</div>
+
+
+<!-- MODAL -->
+
+<dialog
+    id="modal"
+    class="pixel-modal"
+>
+
+    <button
+        id="closeModal"
+        class="modal-close"
+        type="button"
+        aria-label="Close"
+    >
+        ✕
+    </button>
+
+
+    <div id="modalContent"></div>
+
+
+</dialog>
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>

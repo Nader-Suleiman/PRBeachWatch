@@ -1,0 +1,272 @@
+[
+  {
+    "id": "rw16",
+    "stationId": "RW-16",
+    "name": "Balneario Crash Boat",
+    "shortName": "Crash Boat",
+    "municipality": "Aguadilla",
+    "lat": 18.4576667,
+    "lon": -67.1637778
+  },
+  {
+    "id": "rw22",
+    "stationId": "RW-22",
+    "name": "Balneario Pico de Piedra",
+    "shortName": "Pico de Piedra",
+    "municipality": "Aguada",
+    "lat": 18.3843639,
+    "lon": -67.2129889
+  },
+  {
+    "id": "rw5",
+    "stationId": "RW-5",
+    "name": "Balneario de Rincón",
+    "shortName": "Balneario de Rincón",
+    "municipality": "Rincón",
+    "lat": 18.340925,
+    "lon": -67.2560056
+  },
+  {
+    "id": "rw15",
+    "stationId": "RW-15",
+    "name": "Balneario de Añasco o Balneario Tres Hermanos",
+    "shortName": "Tres Hermanos",
+    "municipality": "Añasco",
+    "lat": 18.2879972,
+    "lon": -67.1939222
+  },
+  {
+    "id": "rw38",
+    "stationId": "RW-38",
+    "name": "Muelle de Arecibo",
+    "shortName": "Muelle de Arecibo",
+    "municipality": "Arecibo",
+    "lat": 18.4792583,
+    "lon": -66.7004667
+  },
+  {
+    "id": "rw39",
+    "stationId": "RW-39",
+    "name": "Mar Chiquita",
+    "shortName": "Mar Chiquita",
+    "municipality": "Manatí",
+    "lat": 18.4729167,
+    "lon": -66.4856556
+  },
+  {
+    "id": "rw23",
+    "stationId": "RW-23",
+    "name": "Balneario de Puerto Nuevo",
+    "shortName": "Puerto Nuevo",
+    "municipality": "Vega Baja",
+    "lat": 18.4913667,
+    "lon": -66.3990444
+  },
+  {
+    "id": "rw18",
+    "stationId": "RW-18",
+    "name": "Balneario Manuel \"Nolo\" Morales / Sardinera",
+    "shortName": "Sardinera",
+    "municipality": "Dorado",
+    "lat": 18.4746944,
+    "lon": -66.2808917
+  },
+  {
+    "id": "rw19",
+    "stationId": "RW-19",
+    "name": "Balneario Punta Salinas",
+    "shortName": "Punta Salinas",
+    "municipality": "Toa Baja",
+    "lat": 18.4716583,
+    "lon": -66.1859944
+  },
+  {
+    "id": "rw20a",
+    "stationId": "RW-20A",
+    "name": "Balneario El Escambrón",
+    "shortName": "El Escambrón",
+    "municipality": "San Juan",
+    "lat": 18.4672361,
+    "lon": -66.0899583
+  },
+  {
+    "id": "rw25a",
+    "stationId": "RW-25A",
+    "name": "Playa Sixto Escobar",
+    "shortName": "Playa Sixto Escobar",
+    "municipality": "San Juan",
+    "lat": 18.4667306,
+    "lon": -66.0866667
+  },
+  {
+    "id": "rw26",
+    "stationId": "RW-26",
+    "name": "Playita del Condado",
+    "shortName": "Playita del Condado",
+    "municipality": "San Juan",
+    "lat": 18.4611306,
+    "lon": -66.0824083
+  },
+  {
+    "id": "rw27",
+    "stationId": "RW-27",
+    "name": "Ocean Park",
+    "shortName": "Ocean Park",
+    "municipality": "San Juan",
+    "lat": 18.4530111,
+    "lon": -66.0488806
+  },
+  {
+    "id": "rw28",
+    "stationId": "RW-28",
+    "name": "Playa El Alambique",
+    "shortName": "El Alambique",
+    "municipality": "Carolina",
+    "lat": 18.4440917,
+    "lon": -66.02215
+  },
+  {
+    "id": "rw21c",
+    "stationId": "RW-21C",
+    "name": "Balneario de Carolina",
+    "shortName": "Balneario de Carolina",
+    "municipality": "Carolina",
+    "lat": 18.4459889,
+    "lon": -66.0035722
+  },
+  {
+    "id": "rw29",
+    "stationId": "RW-29",
+    "name": "Playa Vacía Talega",
+    "shortName": "Vacía Talega",
+    "municipality": "Loíza",
+    "lat": 18.4478583,
+    "lon": -65.9062306
+  },
+  {
+    "id": "rw4",
+    "stationId": "RW-4",
+    "name": "Balneario Punta Santiago",
+    "shortName": "Punta Santiago",
+    "municipality": "Humacao",
+    "lat": 18.1584139,
+    "lon": -65.7551861
+  },
+  {
+    "id": "rw31",
+    "stationId": "RW-31",
+    "name": "Tropical Beach",
+    "shortName": "Tropical Beach",
+    "municipality": "Naguabo",
+    "lat": 18.1869278,
+    "lon": -65.7259667
+  },
+  {
+    "id": "rw30",
+    "stationId": "RW-30",
+    "name": "Playa Guayanés",
+    "shortName": "Guayanés",
+    "municipality": "Yabucoa",
+    "lat": 18.0626944,
+    "lon": -65.8191944
+  },
+  {
+    "id": "rw6",
+    "stationId": "RW-6",
+    "name": "Balneario de Patillas",
+    "shortName": "Balneario de Patillas",
+    "municipality": "Patillas",
+    "lat": 17.973975,
+    "lon": -65.9889806
+  },
+  {
+    "id": "rw7",
+    "stationId": "RW-7",
+    "name": "Balneario Punta Guilarte",
+    "shortName": "Punta Guilarte",
+    "municipality": "Arroyo",
+    "lat": 17.9620417,
+    "lon": -66.04
+  },
+  {
+    "id": "rw33",
+    "stationId": "RW-33",
+    "name": "Playita Rosada",
+    "shortName": "Playita Rosada",
+    "municipality": "Lajas",
+    "lat": 17.9717167,
+    "lon": -66.0315
+  },
+  {
+    "id": "rw36",
+    "stationId": "RW-36",
+    "name": "Balneario de Salinas",
+    "shortName": "Balneario de Salinas",
+    "municipality": "Salinas",
+    "lat": 17.9775889,
+    "lon": -66.3324972
+  },
+  {
+    "id": "rw34",
+    "stationId": "RW-34",
+    "name": "Playa Cabullón",
+    "shortName": "Cabullón",
+    "municipality": "Ponce",
+    "lat": 17.9692833,
+    "lon": -66.6027278
+  },
+  {
+    "id": "rw10",
+    "stationId": "RW-10",
+    "name": "Playa Santa",
+    "shortName": "Playa Santa",
+    "municipality": "Guánica",
+    "lat": 17.9377111,
+    "lon": -66.9551972
+  },
+  {
+    "id": "rw9",
+    "stationId": "RW-9",
+    "name": "Caña Gorda",
+    "shortName": "Caña Gorda",
+    "municipality": "Guánica",
+    "lat": 17.9525306,
+    "lon": -66.8845611
+  },
+  {
+    "id": "rw8",
+    "stationId": "RW-8",
+    "name": "Playa Buyé",
+    "shortName": "Buyé",
+    "municipality": "Cabo Rojo",
+    "lat": 18.0488722,
+    "lon": -67.198625
+  },
+  {
+    "id": "rw13",
+    "stationId": "RW-13",
+    "name": "Balneario de Boquerón",
+    "shortName": "Boquerón",
+    "municipality": "Cabo Rojo",
+    "lat": 18.0194417,
+    "lon": -67.1722444
+  },
+  {
+    "id": "rw14a",
+    "stationId": "RW-14A",
+    "name": "Playa Moja Casabe",
+    "shortName": "Moja Casabe",
+    "municipality": "Cabo Rojo",
+    "lat": 17.98581,
+    "lon": -67.21459
+  },
+  {
+    "id": "rw12b",
+    "stationId": "RW-12B",
+    "name": "Playa El Combate",
+    "shortName": "El Combate",
+    "municipality": "Cabo Rojo",
+    "lat": 17.9747944,
+    "lon": -67.2129056
+  }
+]

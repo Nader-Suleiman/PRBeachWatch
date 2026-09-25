@@ -1,0 +1,30 @@
+{
+  "name": "pr-beach-watch",
+  "version": "1.0.0",
+  "description": "A Puerto Rico beach conditions dashboard using NWS and Puerto Rico DRNA public data.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "puerto-rico",
+    "beach-safety",
+    "weather",
+    "nws",
+    "drna",
+    "nodejs",
+    "express",
+    "javascript"
+  ],
+  "author": "Omar Nader",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "express": "^5.1.0"
+  }
+}
