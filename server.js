@@ -34,19 +34,42 @@ const NWS_SURF_INTERVAL =
 const DRNA_INTERVAL =
   60 * 60_000;
 
-
-/*
-  If the NWS Surf Zone Forecast we receive is more
-  than 24 hours old, do NOT present its risk level
-  as though it were current.
-*/
-
 const NWS_SURF_MAX_AGE =
   24 * 60 * 60_000;
 
 
+/* =========================================================
+   LOCAL STATIC FILES
+
+   This works locally.
+
+   Vercel serves public/ through its CDN instead.
+   ========================================================= */
+
 app.use(
   express.static("public")
+);
+
+
+/* =========================================================
+   HOME PAGE
+
+   On Vercel, /index.html is served from public/
+   by Vercel's CDN.
+
+   This route fixes "Cannot GET /".
+   ========================================================= */
+
+app.get(
+  "/",
+  (_req, res) => {
+
+    res.redirect(
+      302,
+      "/index.html"
+    );
+
+  }
 );
 
 
@@ -75,7 +98,6 @@ const sourceStatus = {
 
   },
 
-
   nwsSurf: {
 
     intervalMinutes: 15,
@@ -87,7 +109,6 @@ const sourceStatus = {
     lastError: null
 
   },
-
 
   drna: {
 
@@ -233,7 +254,7 @@ async function getJSON(
           "User-Agent":
             NWS_UA,
 
-          "Accept":
+          Accept:
             "application/geo+json"
 
         }
@@ -248,9 +269,7 @@ async function getJSON(
   ) {
 
     throw new Error(
-
       `HTTP ${response.status} from ${url}`
-
     );
 
   }
@@ -293,9 +312,7 @@ async function getText(
   ) {
 
     throw new Error(
-
       `HTTP ${response.status} from ${url}`
-
     );
 
   }
@@ -317,11 +334,8 @@ async function loadBeaches() {
     await fs.readFile(
 
       new URL(
-
         "./data/beaches.json",
-
         import.meta.url
-
       ),
 
       "utf8"
@@ -460,14 +474,8 @@ const ES_MONTHS = {
 
 
 /* =========================================================
-   PARSE NWS OFFICIAL ISSUE TIME
+   NWS ISSUE TIME
    ========================================================= */
-
-/*
-  Example NWS text:
-
-  343 AM AST Fri Sep 18 2026
-*/
 
 function parseNwsAstIssueTime(
   text = ""
@@ -500,7 +508,6 @@ function parseNwsAstIssueTime(
 
 
   const hhmm =
-
     match[1].padStart(
       4,
       "0"
@@ -508,7 +515,6 @@ function parseNwsAstIssueTime(
 
 
   let hour =
-
     Number(
       hhmm.slice(
         0,
@@ -518,7 +524,6 @@ function parseNwsAstIssueTime(
 
 
   const minute =
-
     Number(
       hhmm.slice(
         2
@@ -527,26 +532,22 @@ function parseNwsAstIssueTime(
 
 
   const ampm =
-
     match[2].toUpperCase();
 
 
   const month =
-
     EN_MONTHS[
       match[3].toLowerCase()
     ];
 
 
   const day =
-
     Number(
       match[4]
     );
 
 
   const year =
-
     Number(
       match[5]
     );
@@ -557,8 +558,7 @@ function parseNwsAstIssueTime(
     hour === 12
   ) {
 
-    hour =
-      0;
+    hour = 0;
 
   }
 
@@ -568,15 +568,10 @@ function parseNwsAstIssueTime(
     hour !== 12
   ) {
 
-    hour +=
-      12;
+    hour += 12;
 
   }
 
-
-  /*
-    Puerto Rico uses AST = UTC-4.
-  */
 
   const utc =
 
@@ -615,7 +610,7 @@ function parseNwsAstIssueTime(
 
 
 /* =========================================================
-   PARSE SPANISH DATE
+   SPANISH DATE
    ========================================================= */
 
 function parseSpanishDate(
@@ -710,14 +705,8 @@ function parseSpanishDate(
 
 
 /* =========================================================
-   PARSE DRNA HEADING DATE
+   SHORT DATE
    ========================================================= */
-
-/*
-  Example:
-
-  16 Sep 2026 Notificación Monitoria de Playas
-*/
 
 function parseEnglishShortDate(
   text = ""
@@ -750,7 +739,6 @@ function parseEnglishShortDate(
 
 
   const month =
-
     EN_MONTHS[
       match[2].toLowerCase()
     ];
@@ -792,7 +780,7 @@ function parseEnglishShortDate(
 
 
 /* =========================================================
-   SOURCE FRESHNESS
+   FRESHNESS
    ========================================================= */
 
 function isRecentIso(
@@ -810,7 +798,6 @@ function isRecentIso(
 
 
   const timestamp =
-
     Date.parse(
       iso
     );
@@ -828,12 +815,7 @@ function isRecentIso(
 
 
   const age =
-
-    Date.now()
-
-    -
-
-    timestamp;
+    Date.now() - timestamp;
 
 
   return (
@@ -852,7 +834,7 @@ function isRecentIso(
 
 
 /* =========================================================
-   NWS ACTIVE ALERTS
+   NWS ALERTS
    ========================================================= */
 
 async function fetchNwsAlerts(
@@ -868,7 +850,6 @@ async function fetchNwsAlerts(
     async () => {
 
       const json =
-
         await getJSON(
           NWS_ALERTS
         );
@@ -938,7 +919,7 @@ async function fetchNwsAlerts(
 
 
 /* =========================================================
-   PARSE NWS SURF ZONE FORECAST
+   NWS SURF FORECAST
    ========================================================= */
 
 function parseSurfForecast(
@@ -947,19 +928,13 @@ function parseSurfForecast(
 ) {
 
   const text =
-
     rawText.replace(
       /\r/g,
       ""
     );
 
 
-  /*
-    Official issue time from NWS product.
-  */
-
   const issue =
-
     parseNwsAstIssueTime(
       text
     );
@@ -968,9 +943,7 @@ function parseSurfForecast(
   const sections =
 
     text.split(
-
       /\n(?=PRZ\d{3}-)/
-
     );
 
 
@@ -985,19 +958,10 @@ function parseSurfForecast(
 
 
     const municipality =
-
       normalize(
         beach.municipality
       );
 
-
-    /*
-      Only inspect the header of the section
-      when matching a municipality.
-
-      This reduces accidental matches caused by
-      municipality names appearing later in text.
-    */
 
     const section =
 
@@ -1125,20 +1089,6 @@ function parseSurfForecast(
       null;
 
 
-    /*
-      Use the FIRST forecast period in this
-      official section.
-
-      This handles:
-
-      TODAY
-      TONIGHT
-      REST OF TODAY
-      THIS AFTERNOON
-      FRIDAY
-      etc.
-    */
-
     const periodMatch =
 
       section.match(
@@ -1214,7 +1164,6 @@ function parseSurfForecast(
 
           "Unknown",
 
-
       surfHeight:
 
         surf
@@ -1231,7 +1180,6 @@ function parseSurfForecast(
           :
 
           "Unknown",
-
 
       forecastPeriod,
 
@@ -1258,10 +1206,6 @@ function parseSurfForecast(
 }
 
 
-/* =========================================================
-   FETCH NWS SURF FORECAST
-   ========================================================= */
-
 async function fetchSurfForecast(
   beaches,
   force = false
@@ -1276,30 +1220,24 @@ async function fetchSurfForecast(
     async () => {
 
       const html =
-
         await getText(
           NWS_SRF
         );
 
 
       const $ =
-
         cheerio.load(
           html
         );
 
 
       const text =
-
         $("body").text();
 
 
       return parseSurfForecast(
-
         text,
-
         beaches
-
       );
 
     },
@@ -1312,7 +1250,7 @@ async function fetchSurfForecast(
 
 
 /* =========================================================
-   PARSE DRNA ARTICLE
+   DRNA
    ========================================================= */
 
 function parseDrnaArticle(
@@ -1320,7 +1258,6 @@ function parseDrnaArticle(
 ) {
 
   const $ =
-
     cheerio.load(
       html
     );
@@ -1406,6 +1343,7 @@ function parseDrnaArticle(
 
 
       if (
+
         cells.length >= 2
 
         &&
@@ -1413,6 +1351,7 @@ function parseDrnaArticle(
         /^RW-/i.test(
           cells[0]
         )
+
       ) {
 
         unsafe.push({
@@ -1437,15 +1376,8 @@ function parseDrnaArticle(
   );
 
 
-  /*
-    Backup station parser.
-  */
-
   if (
-    !unsafe.length
-
-    &&
-
+    !unsafe.length &&
     !allSafe
   ) {
 
@@ -1491,9 +1423,7 @@ function parseDrnaArticle(
       ) {
 
         const stationId =
-
-          match[1]
-            .toUpperCase();
+          match[1].toUpperCase();
 
 
         if (
@@ -1527,13 +1457,6 @@ function parseDrnaArticle(
 
   }
 
-
-  /*
-    Notice publication date.
-
-    DRNA page heading example:
-    16 Sep 2026 Notificación Monitoria de Playas
-  */
 
   const headingText =
 
@@ -1575,7 +1498,6 @@ function parseDrnaArticle(
 
 
   const headingDate =
-
     parseEnglishShortDate(
       headingText
     );
@@ -1590,7 +1512,6 @@ function parseDrnaArticle(
   ) {
 
     const parsed =
-
       Date.parse(
         timeDatetime
       );
@@ -1629,15 +1550,6 @@ function parseDrnaArticle(
 
   }
 
-
-  /*
-    DRNA sample date.
-
-    Example:
-
-    resultados de los muestreos del
-    14 de septiembre de 2026
-  */
 
   const sampleMatch =
 
@@ -1693,10 +1605,6 @@ function parseDrnaArticle(
 }
 
 
-/* =========================================================
-   FETCH DRNA
-   ========================================================= */
-
 async function fetchDrnaNotice(
   force = false
 ) {
@@ -1710,14 +1618,12 @@ async function fetchDrnaNotice(
     async () => {
 
       const categoryHtml =
-
         await getText(
           DRNA_CATEGORY
         );
 
 
       const $ =
-
         cheerio.load(
           categoryHtml
         );
@@ -1735,14 +1641,12 @@ async function fetchDrnaNotice(
         ) => {
 
           const link =
-
             $(a).attr(
               "href"
             );
 
 
           const text =
-
             $(a).text();
 
 
@@ -1783,9 +1687,7 @@ async function fetchDrnaNotice(
       ) {
 
         throw new Error(
-
           "Could not locate the latest DRNA beach notice."
-
         );
 
       }
@@ -1794,16 +1696,12 @@ async function fetchDrnaNotice(
       const articleUrl =
 
         new URL(
-
           href,
-
           DRNA_CATEGORY
-
         ).href;
 
 
       const articleHtml =
-
         await getText(
           articleUrl
         );
@@ -1836,33 +1734,14 @@ async function fetchDrnaNotice(
    ALERT MATCHING
    ========================================================= */
 
-/*
-  IMPORTANT ACCURACY CHANGE:
-
-  We removed the old logic that said an alert applied
-  to every beach merely because areaDesc contained
-  the words "Puerto Rico".
-
-  Now an alert has to match:
-
-  1. the beach municipality explicitly
-
-  OR
-
-  2. the exact NWS forecast zone code.
-*/
-
 function areaMatchesBeach(
   areaDesc = "",
   beach
 ) {
 
   return containsWholePhrase(
-
     areaDesc,
-
     beach.municipality
-
   );
 
 }
@@ -1874,7 +1753,6 @@ function zoneMatchesAlert(
 ) {
 
   const zoneCode =
-
     surfData?.zoneCode;
 
 
@@ -1888,7 +1766,6 @@ function zoneMatchesAlert(
 
 
   const ugc =
-
     alert.geocode?.UGC;
 
 
@@ -1901,6 +1778,7 @@ function zoneMatchesAlert(
     &&
 
     ugc
+
       .map(
         code =>
           String(
@@ -1934,11 +1812,7 @@ function relevantAlerts(
 
       const text =
 
-        `${
-          alert.event || ""
-        } ${
-          alert.headline || ""
-        }`;
+        `${alert.event || ""} ${alert.headline || ""}`;
 
 
       if (
@@ -1955,21 +1829,15 @@ function relevantAlerts(
       return (
 
         areaMatchesBeach(
-
           alert.areaDesc,
-
           beach
-
         )
 
         ||
 
         zoneMatchesAlert(
-
           alert,
-
           surfData
-
         )
 
       );
@@ -1982,7 +1850,7 @@ function relevantAlerts(
 
 
 /* =========================================================
-   FINAL STATUS
+   STATUS
    ========================================================= */
 
 function computeStatus({
@@ -1997,10 +1865,6 @@ function computeStatus({
 
 }) {
 
-
-  /*
-    DRNA unsafe station has highest priority.
-  */
 
   if (
     drnaUnsafe
@@ -2021,10 +1885,6 @@ function computeStatus({
 
   }
 
-
-  /*
-    Active official hazards.
-  */
 
   const dangerousAlert =
 
@@ -2061,11 +1921,6 @@ function computeStatus({
   }
 
 
-  /*
-    Do not show stale NWS forecast data
-    as current.
-  */
-
   if (
     nwsSurfStale
   ) {
@@ -2087,8 +1942,7 @@ function computeStatus({
 
 
   if (
-    ripCurrent ===
-    "High"
+    ripCurrent === "High"
   ) {
 
     return {
@@ -2108,8 +1962,7 @@ function computeStatus({
 
 
   if (
-    ripCurrent ===
-    "Moderate"
+    ripCurrent === "Moderate"
   ) {
 
     return {
@@ -2129,8 +1982,7 @@ function computeStatus({
 
 
   if (
-    ripCurrent ===
-    "Low"
+    ripCurrent === "Low"
   ) {
 
     return {
@@ -2166,7 +2018,7 @@ function computeStatus({
 
 
 /* =========================================================
-   BACKGROUND MONITOR
+   MONITORING
    ========================================================= */
 
 async function runMonitorCheck(
@@ -2175,26 +2027,22 @@ async function runMonitorCheck(
 ) {
 
   const state =
-
     sourceStatus[
       sourceName
     ];
 
 
   state.lastAttempt =
-
     new Date()
       .toISOString();
 
 
   try {
 
-
     await loader();
 
 
     state.lastSuccess =
-
       new Date()
         .toISOString();
 
@@ -2204,28 +2052,21 @@ async function runMonitorCheck(
 
 
     console.log(
-
       `[monitor] ${sourceName} updated successfully at ${state.lastSuccess}`
-
     );
 
-
   }
-
 
   catch (
     error
   ) {
-
 
     state.lastError =
       error.message;
 
 
     console.error(
-
       `[monitor] ${sourceName} update failed: ${error.message}`
-
     );
 
   }
@@ -2240,7 +2081,6 @@ async function monitorNwsAlerts() {
     "nwsAlerts",
 
     () =>
-
       fetchNwsAlerts(
         true
       )
@@ -2259,16 +2099,12 @@ async function monitorNwsSurf() {
     async () => {
 
       const beaches =
-
         await loadBeaches();
 
 
       await fetchSurfForecast(
-
         beaches,
-
         true
-
       );
 
     }
@@ -2285,7 +2121,6 @@ async function monitorDrna() {
     "drna",
 
     () =>
-
       fetchDrnaNotice(
         true
       )
@@ -2330,29 +2165,20 @@ async function startBackgroundMonitoring() {
 
 
   setInterval(
-
     monitorNwsAlerts,
-
     NWS_ALERT_INTERVAL
-
   );
 
 
   setInterval(
-
     monitorNwsSurf,
-
     NWS_SURF_INTERVAL
-
   );
 
 
   setInterval(
-
     monitorDrna,
-
     DRNA_INTERVAL
-
   );
 
 }
@@ -2374,9 +2200,7 @@ app.get(
     try {
 
       res.json(
-
         await loadBeaches()
-
       );
 
     }
@@ -2418,18 +2242,13 @@ app.get(
 
 
       const beaches =
-
         await loadBeaches();
 
 
       const [
-
         alerts,
-
         surf,
-
         drna
-
       ] =
 
         await Promise.all([
@@ -2438,10 +2257,7 @@ app.get(
           fetchNwsAlerts()
 
             .catch(
-
-              () =>
-                []
-
+              () => []
             ),
 
 
@@ -2450,10 +2266,7 @@ app.get(
           )
 
             .catch(
-
-              () =>
-                ({})
-
+              () => ({})
             ),
 
 
@@ -2498,27 +2311,23 @@ app.get(
 
 
       const generatedAt =
-
         new Date()
           .toISOString();
 
 
       const nwsSurfCheckedAt =
-
         cacheTimeIso(
           "nws-srf"
         );
 
 
       const nwsAlertsCheckedAt =
-
         cacheTimeIso(
           "nws-alerts"
         );
 
 
       const drnaCheckedAt =
-
         cacheTimeIso(
           "drna"
         );
@@ -2571,24 +2380,14 @@ app.get(
             const nwsSurfFresh =
 
               isRecentIso(
-
                 surfData.forecastIssuedAt,
-
                 NWS_SURF_MAX_AGE
-
               );
 
 
             const nwsSurfStale =
+              nwsSurfFresh === false;
 
-              nwsSurfFresh ===
-              false;
-
-
-            /*
-              Hide stale forecast values instead of
-              showing them as current.
-            */
 
             const ripCurrent =
 
@@ -2619,13 +2418,9 @@ app.get(
             const beachAlerts =
 
               relevantAlerts(
-
                 alerts,
-
                 beach,
-
                 surfData
-
               );
 
 
@@ -2650,16 +2445,7 @@ app.get(
               false;
 
 
-            /*
-              Water quality wording is intentionally
-              precise.
-
-              We are NOT claiming a live sensor says
-              "Good".
-            */
-
             let waterQuality =
-
               "Unknown";
 
 
@@ -2673,11 +2459,9 @@ app.get(
               ) {
 
                 waterQuality =
-
                   "Not suitable for bathers";
 
               }
-
 
               else if (
 
@@ -2694,7 +2478,6 @@ app.get(
               ) {
 
                 waterQuality =
-
                   "No advisory for this station in latest DRNA notice";
 
               }
@@ -2722,34 +2505,25 @@ app.get(
 
               ...beach,
 
-
               status,
-
 
               ripCurrent,
 
-
               surfHeight,
 
-
               waterQuality,
-
 
               forecastPeriod:
                 surfData.forecastPeriod,
 
-
               nwsZoneCode:
                 surfData.zoneCode,
-
 
               nwsZoneName:
                 surfData.zoneName,
 
-
               alerts:
                 beachAlerts,
-
 
               sourceFreshness: {
 
@@ -2761,7 +2535,6 @@ app.get(
                   !drna.unavailable
 
               },
-
 
               sourceTimes: {
 
@@ -2794,7 +2567,6 @@ app.get(
 
               },
 
-
               sources: {
 
                 nwsSurf:
@@ -2807,17 +2579,6 @@ app.get(
                   drna.url
 
               },
-
-
-              /*
-                Kept for compatibility.
-
-                This means the API response was
-                generated now.
-
-                It is NOT the official source
-                publication time.
-              */
 
               updatedAt:
                 generatedAt
@@ -2832,7 +2593,6 @@ app.get(
       res.json({
 
         generatedAt,
-
 
         monitoring: {
 
@@ -2853,13 +2613,11 @@ app.get(
 
         },
 
-
         conditions
 
       });
 
     }
-
 
     catch (
       error
@@ -2897,7 +2655,29 @@ app.get(
     res.json({
 
       automaticMonitoring:
-        true,
+
+        process.env.VERCEL
+
+          ?
+
+          false
+
+          :
+
+          true,
+
+
+      hostingMode:
+
+        process.env.VERCEL
+
+          ?
+
+          "vercel-request-based"
+
+          :
+
+          "persistent-node-server",
 
 
       serverTime:
@@ -2923,21 +2703,16 @@ app.get(
       cache: {
 
         nwsAlertsFetchedAt:
-
           cacheTimeIso(
             "nws-alerts"
           ),
 
-
         nwsSurfFetchedAt:
-
           cacheTimeIso(
             "nws-srf"
           ),
 
-
         drnaFetchedAt:
-
           cacheTimeIso(
             "drna"
           )
@@ -2956,40 +2731,52 @@ app.get(
 
 
 /* =========================================================
-   START
+   VERCEL
+
+   Vercel imports the Express application directly.
    ========================================================= */
 
-app.listen(
-
-  PORT,
-
-  () => {
-
-    console.log(
-
-      `PR Beach Watch running at http://localhost:${PORT}`
-
-    );
+export default app;
 
 
-    startBackgroundMonitoring()
+/* =========================================================
+   LOCAL DEVELOPMENT ONLY
 
-      .catch(
+   Vercel must NOT start a permanent HTTP listener.
+   ========================================================= */
 
-        error => {
+if (
+  !process.env.VERCEL
+) {
 
-          console.error(
+  app.listen(
 
-            "Automatic monitoring could not start:",
+    PORT,
 
-            error
+    () => {
 
-          );
-
-        }
-
+      console.log(
+        `PR Beach Watch running at http://localhost:${PORT}`
       );
 
-  }
 
-);
+      startBackgroundMonitoring()
+
+        .catch(
+
+          error => {
+
+            console.error(
+              "Automatic monitoring could not start:",
+              error
+            );
+
+          }
+
+        );
+
+    }
+
+  );
+
+}
